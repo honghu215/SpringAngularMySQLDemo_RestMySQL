@@ -2,7 +2,7 @@ package com.springmysql.demo.controller;
 
 
 import com.springmysql.demo.model.Stock;
-import com.springmysql.demo.model.User;
+import com.springmysql.demo.model.UserEntity;
 import com.springmysql.demo.repo.StockRepository;
 import com.springmysql.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +35,8 @@ public class Controller {
     }
 
     @PostMapping(value = "register")
-    public User addUser(@RequestBody User user) {
-        User _user = userRepository.save(new User(user.getName(), user.getPassword(), user.getEmail()));
+    public UserEntity addUser(@RequestBody UserEntity user) {
+        UserEntity _user = userRepository.save(new UserEntity(user.getName(), user.getPassword(), user.getEmail()));
         return _user;
     }
 

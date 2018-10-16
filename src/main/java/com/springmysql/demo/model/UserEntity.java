@@ -2,10 +2,12 @@ package com.springmysql.demo.model;
 
 import javax.persistence.*;
 import java.util.Objects;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name = "user")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,14 +26,22 @@ public class User {
     @Column(name = "role", nullable = false)
     private String role;
 
-    public User() {};
+    public UserEntity() {};
 
-    public User(String name, String password, String email) {
+    public UserEntity(String name, String password, String email) {
         this.name = name;
         this.password = password;
         this.email = email;
         this.role = "ROLE_USER";
     }
+
+    public UserEntity(String name, String password, String email, String role) {
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
 
     public int getId() {
         return id;
@@ -68,7 +78,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
@@ -81,7 +91,7 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+        UserEntity user = (UserEntity) o;
         return id == user.id &&
                 Objects.equals(name, user.name) &&
                 Objects.equals(password, user.password) &&
