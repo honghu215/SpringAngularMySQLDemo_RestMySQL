@@ -21,7 +21,7 @@ public class User {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "role", columnDefinition = "default 'ROLE_USER")
+    @Column(name = "role", nullable = false)
     private String role;
 
     public User() {};
@@ -30,6 +30,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.email = email;
+        this.role = "ROLE_USER";
     }
 
     public int getId() {
@@ -48,13 +49,9 @@ public class User {
         return email;
     }
 
-    public String getRole() {
-        return role;
-    }
+    public String getRole() { return role; }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+    public void setRole(String role) { this.role = role; }
 
     public void setName(String name) {
         this.name = name;
@@ -67,6 +64,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
     @Override
     public String toString() {

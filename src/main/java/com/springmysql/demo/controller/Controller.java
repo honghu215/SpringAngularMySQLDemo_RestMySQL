@@ -24,7 +24,7 @@ public class Controller {
     @Autowired
     UserRepository userRepository;
 
-    @RequestMapping(value = "/stocks", method = RequestMethod.GET)
+    @RequestMapping(value = "stocks", method = RequestMethod.GET)
     public List<Stock> getAllStocks() {
         System.out.println("Get all Stocks...");
 
@@ -34,13 +34,13 @@ public class Controller {
         return stocks;
     }
 
-    @PostMapping(value = "/register")
+    @PostMapping(value = "register")
     public User addUser(@RequestBody User user) {
         User _user = userRepository.save(new User(user.getName(), user.getPassword(), user.getEmail()));
         return _user;
     }
 
-    @PostMapping(value = "/stocks/create")
+    @PostMapping(value = "create")
     public Stock postStock(@RequestBody Stock stock) {
 
         Stock _stock = (Stock) repository.save(new Stock(stock.getStock_name(), stock.getStock_price(), stock.getStock_field()));
